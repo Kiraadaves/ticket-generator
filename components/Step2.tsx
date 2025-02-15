@@ -1,0 +1,75 @@
+import { useFormContext } from "react-hook-form";
+import ImageUpload from "./ImageUpload";
+
+type Step2Props = {
+  nextStep: () => void;
+  prevStep: () => void;
+};
+
+const Step2 = ({ nextStep, prevStep }: Step2Props) => {
+  const {
+    register,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useFormContext();
+  const avatarUrl = watch("avatarUrl");
+  console.log(avatarUrl);
+  return (
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold">Event Details</h2>
+      <div>
+        <label htmlFor="location" className="block mb-2">
+          Location
+        </label>
+        <input
+          id="location"
+          {...register("location", { required: "Location is required" })}
+          className="w-full p-2 border rounded"
+          aria-invalid={errors.location ? "true" : "false"}
+        />
+        {errors.location && (
+          <p role="alert" className="text-red-500">
+            {errors.location.message as string}
+          </p>
+        )}
+      </div>
+      <div>
+        <label htmlFor="dateTime" className="block mb-2">
+          Date and Time
+        </label>
+        <input
+          id="dateTime"
+          type="datetime-local"
+          {...register("dateTime", { required: "Date and time is required" })}
+          className="w-full p-2 border rounded"
+          aria-invalid={errors.dateTime ? "true" : "false"}
+        />
+        {errors.dateTime && (
+          <p role="alert" className="text-red-500">
+            {errors.dateTime.message as string}
+          </p>
+        )}
+      </div>
+      <ImageUpload onUpload={(dataUrl) => setValue("avatarUrl", dataUrl)} />
+      <div className="flex justify-between">
+        <button
+          type="button"
+          onClick={prevStep}
+          className="bg-gray-500 text-white p-2 rounded"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={nextStep}
+          className="bg-blue-500 text-white p-2 rounded"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Step2;
