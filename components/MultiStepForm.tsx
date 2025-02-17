@@ -45,16 +45,24 @@ const MultiStepForm = () => {
 
   const nextStep = () =>
     setCurrentStep((prev) => Math.min(prev + 1, formsteps.length));
+
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
+
   const CurrentStepComponent = formsteps.find(
     (steps) => steps.id === currentStep
   )?.component;
+
   const onSubmit = async (data: FormData) => {
+    console.log("clicked");
     const db = await openDB("conference-ticket-db", 1);
     await db.put("formData", data, "currentForm");
     setShowTicket(true);
   };
 
+  const handleCloseTicketModal = () => {
+    setShowTicket(false);
+    methods.reset();
+  };
   return (
     <div className="min-h-screen bg-magnolia flex flex-col md:items-center md:justify-center p-0 md:p-4">
       <div className="relative md:w-[940px] md:h-[600px] md:p-4 md:bg-white md:rounded-2xl md:shadow-lg md:flex">
@@ -89,7 +97,6 @@ const MultiStepForm = () => {
                 className="w-full max-w-lg"
               >
                 {CurrentStepComponent && <CurrentStepComponent />}
-                {showTicket && <Ticket />}
               </form>
             </FormProvider>
           </div>
@@ -113,6 +120,7 @@ const MultiStepForm = () => {
             {currentStep === formsteps.length && (
               <button
                 type="submit"
+                onClick={methods.handleSubmit(onSubmit)}
                 className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
               >
                 Confirm
@@ -121,6 +129,7 @@ const MultiStepForm = () => {
           </div>
         </main>
       </div>
+      {showTicket && <Ticket onClose={handleCloseTicketModal} />}
     </div>
   );
 };
