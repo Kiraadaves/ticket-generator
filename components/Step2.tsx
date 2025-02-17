@@ -1,12 +1,12 @@
 import { useFormContext } from "react-hook-form";
 import ImageUpload from "./ImageUpload";
 
-type Step2Props = {
-  nextStep: () => void;
-  prevStep: () => void;
-};
+//type Step2Props = {
+//  nextStep: () => void;
+//  prevStep: () => void;
+//};
 
-const Step2 = ({ nextStep, prevStep }: Step2Props) => {
+const Step2 = () => {
   const {
     register,
     formState: { errors },
@@ -53,7 +53,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
       </div>
       <ImageUpload onUpload={(dataUrl) => setValue("avatarUrl", dataUrl)} />
       <div className="flex justify-between">
-        <button
+       {/* <button
           type="button"
           onClick={prevStep}
           className="bg-gray-500 text-white p-2 rounded"
@@ -66,7 +66,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
           className="bg-blue-500 text-white p-2 rounded"
         >
           Next
-        </button>
+        </button>*/}
       </div>
     </div>
   );
