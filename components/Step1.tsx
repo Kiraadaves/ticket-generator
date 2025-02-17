@@ -1,8 +1,5 @@
 import { useFormContext } from "react-hook-form";
 
-//type Step1Props = {
-//  nextStep: () => void;
-//};
 
 const Step1 = () => {
   const {
@@ -68,13 +65,6 @@ const Step1 = () => {
           </p>
         )}
       </div>
-     {/* <button
-        type="button"
-        onClick={nextStep}
-        className="w-full bg-blue-500 text-white p-2 rounded"
-      >
-        Next
-      </button>*/}
     </div>
   );
 };

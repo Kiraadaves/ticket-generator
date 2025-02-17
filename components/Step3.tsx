@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { useFormContext } from "react-hook-form";
 
-//type Step3Props = {
-//  prevStep: () => void;
-//};
+
 
 const Step3 = () => {
   const { watch } = useFormContext();
@@ -42,18 +40,6 @@ const Step3 = () => {
             />
           </div>
         )}
-      </div>
-      <div className="flex justify-between">
-        {/*<button
-          type="button"
-          onClick={prevStep}
-          className="bg-gray-500 text-white p-2 rounded"
-        >
-          Previous
-        </button>
-        <button type="submit" className="bg-green-500 text-white p-2 rounded">
-          Generate Ticket
-        </button>*/}
       </div>
     </div>
   );
