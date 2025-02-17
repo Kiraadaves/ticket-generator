@@ -3,16 +3,25 @@ import { useFormContext } from "react-hook-form";
 
 interface ModalProps {
   onClose: () => void;
+  generateNew: () => void;
 }
 
-const Ticket = ({ onClose }: ModalProps) => {
+const Ticket = ({ onClose, generateNew }: ModalProps) => {
   const { watch } = useFormContext();
   const formData = watch();
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
-        <h2 className="text-2xl font-bold mb-4">Conference Ticket</h2>
+        <div className="flex flex-col md:flex-row justify-between gap-8 items-center">
+          <h2 className="text-2xl font-bold ">Conference Ticket</h2>
+          <button
+            onClick={onClose}
+            className="mt-4 text-[#4b45f0] text-xl font-bold"
+          >
+            X
+          </button>
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <p>
@@ -44,10 +53,10 @@ const Ticket = ({ onClose }: ModalProps) => {
           </div>
         </div>
         <button
-          onClick={onClose}
+          onClick={generateNew}
           className="mt-4 bg-[#4b45f0] px-4 py-2 rounded-lg text-white hover:opacity-90"
         >
-          Close Ticket
+          Generate Another Ticket
         </button>
       </div>
     </div>

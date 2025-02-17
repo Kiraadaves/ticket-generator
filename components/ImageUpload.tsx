@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 type ImageUploadProps = {
   onUpload: (dataUrl: string) => void;
@@ -8,6 +9,12 @@ type ImageUploadProps = {
 
 const ImageUpload = ({ onUpload }: ImageUploadProps) => {
   const [preview, setPreview] = useState<string | null>(null);
+  const { watch } = useFormContext();
+  const avatarUrl = watch("avatarUrl");
+
+  useEffect(() => {
+    setPreview(avatarUrl || null);
+  }, [avatarUrl]);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -21,7 +28,6 @@ const ImageUpload = ({ onUpload }: ImageUploadProps) => {
     };
     reader.readAsDataURL(file);
   };
-
   return (
     <div>
       <label htmlFor="avatar" className="block mb-2">

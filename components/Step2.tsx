@@ -1,8 +1,12 @@
 import { useFormContext } from "react-hook-form";
 import ImageUpload from "./ImageUpload";
 
+interface Step2Props {
+  nextStep: () => void;
+  prevStep: () => void;
+}
 
-const Step2 = () => {
+const Step2 = ({ nextStep, prevStep }: Step2Props) => {
   const {
     register,
     formState: { errors },
@@ -48,7 +52,23 @@ const Step2 = () => {
         )}
       </div>
       <ImageUpload onUpload={(dataUrl) => setValue("avatarUrl", dataUrl)} />
-      
+      <div className="flex justify-between mt-8">
+        {" "}
+        <button
+          type="button"
+          onClick={prevStep}
+          className="bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff]"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={nextStep}
+          className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

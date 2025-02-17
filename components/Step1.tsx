@@ -1,7 +1,10 @@
 import { useFormContext } from "react-hook-form";
 
+interface Step1Props {
+  nextStep: () => void;
+}
 
-const Step1 = () => {
+const Step1 = ({ nextStep }: Step1Props) => {
   const {
     register,
     formState: { errors },
@@ -65,6 +68,13 @@ const Step1 = () => {
           </p>
         )}
       </div>
+      <button
+        type="button"
+        onClick={nextStep}
+        className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
+      >
+        Next
+      </button>
     </div>
   );
 };
