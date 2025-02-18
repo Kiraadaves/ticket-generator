@@ -14,7 +14,21 @@ const Step3 = ({ prevStep }: Step3Props) => {
       <h2 className="md:text-2xl font-bold text-center text-[#4b45f0] text-xl">
         Summary
       </h2>
-      <div className="space-y-4">
+      <p className="text-slate-500 text-center mb-4">
+        Kindly confirm your details before generating ticket
+      </p>
+      {formData.avatarUrl && (
+        <div className="mt-4 flex justify-center flex-wrap items-center">
+          <Image
+            width={100}
+            height={100}
+            src={formData.avatarUrl || "/placeholder.svg"}
+            alt="Avatar"
+            className="w-32 h-32 object-cover rounded-full shadow-lg"
+          />
+        </div>
+      )}
+      <div className="space-y-4 text-center">
         <p className="text-[#e77682]">
           <strong>Full Name:</strong>{" "}
           <span className="text-slate-500"> {formData.fullName}</span>{" "}
@@ -35,20 +49,6 @@ const Step3 = ({ prevStep }: Step3Props) => {
           <strong>Date and Time:</strong>{" "}
           <span className="text-slate-500">{formData.dateTime}</span>
         </p>
-        {formData.avatarUrl && (
-          <div className="mt-4 flex justify-between flex-wrap items-center">
-            <p className="text-[#e77682]">
-              <strong>Avatar</strong>
-            </p>
-            <Image
-              width={100}
-              height={100}
-              src={formData.avatarUrl || "/placeholder.svg"}
-              alt="Avatar"
-              className="w-32 h-32 object-cover rounded-full shadow-lg"
-            />
-          </div>
-        )}
       </div>
       <div className="flex justify-between mt-12">
         {" "}

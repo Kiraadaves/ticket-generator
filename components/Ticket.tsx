@@ -39,19 +39,24 @@ const Ticket = ({ onClose, generateNew }: ModalProps) => {
         <div className="flex flex-col gap-4">
           <div className="text-center space-y-4">
             <p>
-              <strong>Full Name:</strong> {formData.fullName}
+              <strong className="text-[#e77682]">Full Name:</strong>{" "}
+              {formData.fullName}
             </p>
             <p>
-              <strong>Email:</strong> {formData.email}
+              <strong className="text-[#e77682]">Email:</strong>{" "}
+              {formData.email}
             </p>
             <p>
-              <strong>Phone Number:</strong> {formData.phoneNumber}
+              <strong className="text-[#e77682]">Phone Number:</strong>{" "}
+              {formData.phoneNumber}
             </p>
             <p>
-              <strong>Location:</strong> {formData.location}
+              <strong className="text-[#e77682]">Location:</strong>{" "}
+              {formData.location}
             </p>
             <p>
-              <strong>Date and Time:</strong> {formData.dateTime}
+              <strong className="text-[#e77682]">Date and Time:</strong>{" "}
+              {formData.dateTime}
             </p>
           </div>
         </div>
