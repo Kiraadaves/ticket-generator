@@ -30,7 +30,7 @@ const ImageUpload = ({ onUpload }: ImageUploadProps) => {
   };
   return (
     <div>
-      <label htmlFor="avatar" className="block mb-2">
+      <label htmlFor="avatar" className="block mb-2 text-[#27247e]">
         Avatar
       </label>
       <input
@@ -42,7 +42,7 @@ const ImageUpload = ({ onUpload }: ImageUploadProps) => {
       />
       {preview && (
         <div className="mt-4 flex justify-between flex-wrap items-center">
-          <p>Image Preview</p>
+          <p className="text-[#27247e]">Image Preview</p>
           <Image
             width={100}
             height={100}

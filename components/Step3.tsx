@@ -15,24 +15,29 @@ const Step3 = ({ prevStep }: Step3Props) => {
         Summary
       </h2>
       <div className="space-y-4">
-        <p>
-          <strong>Full Name:</strong> {formData.fullName}
+        <p className="text-[#e77682]">
+          <strong>Full Name:</strong>{" "}
+          <span className="text-slate-500"> {formData.fullName}</span>{" "}
         </p>
-        <p>
-          <strong>Email:</strong> {formData.email}
+        <p className="text-[#e77682]">
+          <strong>Email:</strong>{" "}
+          <span className="text-slate-500">{formData.email}</span>
         </p>
-        <p>
-          <strong>Phone Number:</strong> {formData.phoneNumber}
+        <p className="text-[#e77682]">
+          <strong>Phone Number:</strong>{" "}
+          <span className="text-slate-500">{formData.phoneNumber}</span>
         </p>
-        <p>
-          <strong>Location:</strong> {formData.location}
+        <p className="text-[#e77682]">
+          <strong>Location:</strong>{" "}
+          <span className="text-slate-500">{formData.location}</span>{" "}
         </p>
-        <p>
-          <strong>Date and Time:</strong> {formData.dateTime}
+        <p className="text-[#e77682]">
+          <strong>Date and Time:</strong>{" "}
+          <span className="text-slate-500">{formData.dateTime}</span>
         </p>
         {formData.avatarUrl && (
           <div className="mt-4 flex justify-between flex-wrap items-center">
-            <p>
+            <p className="text-[#e77682]">
               <strong>Avatar</strong>
             </p>
             <Image
@@ -40,7 +45,7 @@ const Step3 = ({ prevStep }: Step3Props) => {
               height={100}
               src={formData.avatarUrl || "/placeholder.svg"}
               alt="Avatar"
-              className="w-32 h-32 object-cover rounded-full"
+              className="w-32 h-32 object-cover rounded-full shadow-lg"
             />
           </div>
         )}

@@ -23,8 +23,11 @@ const Step1 = ({ nextStep }: Step1Props) => {
       <h2 className="text-2xl font-bold text-[#4b45f0]">
         Personal Information
       </h2>
+      <p className="text-slate-500">
+        Please provide your name, email and phone number
+      </p>
       <div>
-        <label htmlFor="fullName" className="block mb-2">
+        <label htmlFor="fullName" className="block mb-2 text-[#27247e]">
           Full Name
         </label>
         <input
@@ -50,7 +53,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
         )}
       </div>
       <div>
-        <label htmlFor="email" className="block mb-2">
+        <label htmlFor="email" className="block mb-2 text-[#27247e]">
           Email Address
         </label>
         <input
@@ -63,7 +66,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
               message: "Invalid email format",
             },
           })}
-          className="w-full p-3 border rounded outline-[#4b45f096]"
+          className="w-full p-3 border rounded outline-[#4b45f096] "
           aria-invalid={errors.email ? "true" : "false"}
         />
         {errors.email && (
@@ -73,7 +76,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
         )}
       </div>
       <div>
-        <label htmlFor="phoneNumber" className="block mb-2">
+        <label htmlFor="phoneNumber" className="block mb-2 text-[#27247e]">
           Phone Number
         </label>
         <input

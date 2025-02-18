@@ -103,7 +103,7 @@ const MultiStepForm = () => {
           </div>
         </aside>
         <main className="p-4 md:flex-1 md:py-8 md:px-16">
-          <div className="bg-white -mt-[72px] md:mt-0 rounded-lg md:rounded-none shadow-lg md:shadow-none p-6 md:p-0">
+          <div className="bg-white -mt-[80px] md:mt-0 rounded-lg md:rounded-none shadow-lg md:shadow-none p-6 md:p-0">
             <FormProvider {...methods}>
               <form
                 onSubmit={methods.handleSubmit(onSubmit)}

@@ -26,8 +26,11 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
   return (
     <div className="space-y-4">
       <h2 className="text-2xl font-bold text-[#4b45f0]">Event Details</h2>
+      <p className="text-slate-500">
+        Please provide your location, select a date and add an avatar or photo.
+      </p>
       <div>
-        <label htmlFor="location" className="block mb-2">
+        <label htmlFor="location" className="block mb-2 text-[#27247e]">
           Location
         </label>
         <input
@@ -43,7 +46,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
         )}
       </div>
       <div>
-        <label htmlFor="dateTime" className="block mb-2">
+        <label htmlFor="dateTime" className="block mb-2 text-[#27247e]">
           Date and Time
         </label>
         <input
