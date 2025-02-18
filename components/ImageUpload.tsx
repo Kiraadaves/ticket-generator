@@ -38,7 +38,7 @@ const ImageUpload = ({ onUpload }: ImageUploadProps) => {
         type="file"
         accept="image/*"
         onChange={handleUpload}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded outline-[#4b45f096]"
       />
       {preview && (
         <div className="mt-4">

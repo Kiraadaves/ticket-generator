@@ -9,7 +9,7 @@ import Ticket from "./Ticket";
 
 const formsteps = [
   { id: 1, title: "Your info", component: Step1 },
-  { id: 2, title: "Select plan", component: Step2 },
+  { id: 2, title: "Select date and upload photo", component: Step2 },
   { id: 3, title: "Summary", component: Step3 },
 ];
 
@@ -26,7 +26,14 @@ const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showTicket, setShowTicket] = useState(false);
   //const [formKey, setFormKey] = useState(0);
-  const methods = useForm<FormData>();
+  const methods = useForm<FormData>({
+    mode: "onChange",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+    },
+  });
   const loadSavedData = useCallback(() => {
     const savedData = sessionStorage.getItem("formData");
     if (savedData) {

@@ -7,8 +7,16 @@ interface Step1Props {
 const Step1 = ({ nextStep }: Step1Props) => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
+    trigger,
   } = useFormContext();
+
+  const handleNext = async () => {
+    const isStepValid = await trigger(["fullName", "email", "phoneNumber"]);
+    if (isStepValid) {
+      nextStep();
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -19,12 +27,22 @@ const Step1 = ({ nextStep }: Step1Props) => {
         </label>
         <input
           id="fullName"
-          {...register("fullName", { required: "Full name is required" })}
-          className="w-full p-2 border rounded"
+          {...register("fullName", {
+            required: "Full name is required",
+            pattern: {
+              value: /^[A-Za-z\s]+$/,
+              message: "Full name should only contain alphabets",
+            },
+            minLength: {
+              value: 6,
+              message: "Full name must be at least 6 characters long",
+            },
+          })}
+          className="w-full p-2 border rounded outline-[#4b45f096] "
           aria-invalid={errors.fullName ? "true" : "false"}
         />
         {errors.fullName && (
-          <p role="alert" className="text-red-500">
+          <p role="alert" className="text-red-500 mt-2">
             {errors.fullName.message as string}
           </p>
         )}
@@ -43,11 +61,11 @@ const Step1 = ({ nextStep }: Step1Props) => {
               message: "Invalid email format",
             },
           })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded outline-[#4b45f096]"
           aria-invalid={errors.email ? "true" : "false"}
         />
         {errors.email && (
-          <p role="alert" className="text-red-500">
+          <p role="alert" className="text-red-500 mt-2">
             {errors.email.message as string}
           </p>
         )}
@@ -58,20 +76,35 @@ const Step1 = ({ nextStep }: Step1Props) => {
         </label>
         <input
           id="phoneNumber"
-          {...register("phoneNumber", { required: "Phone number is required" })}
-          className="w-full p-2 border rounded"
+          {...register("phoneNumber", {
+            required: "Phone number is required",
+            pattern: {
+              value: /^\d+$/,
+              message: "Phone number should only contain numbers",
+            },
+            minLength: {
+              value: 11,
+              message: "Phone number must be exactly 11 characters long",
+            },
+            maxLength: {
+              value: 11,
+              message: "Phone number must be exactly 11 characters long",
+            },
+          })}
+          className="w-full p-2 border rounded outline-[#4b45f096]"
           aria-invalid={errors.phoneNumber ? "true" : "false"}
         />
         {errors.phoneNumber && (
-          <p role="alert" className="text-red-500">
+          <p role="alert" className="text-red-500 mt-2">
             {errors.phoneNumber.message as string}
           </p>
         )}
       </div>
       <button
         type="button"
-        onClick={nextStep}
-        className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
+        onClick={handleNext}
+        disabled={!isValid}
+        className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
       </button>

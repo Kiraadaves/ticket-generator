@@ -9,12 +9,20 @@ interface Step2Props {
 const Step2 = ({ nextStep, prevStep }: Step2Props) => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
+    trigger,
     setValue,
     watch,
   } = useFormContext();
   const avatarUrl = watch("avatarUrl");
   console.log(avatarUrl);
+  const handleNext = async () => {
+    const isStepValid = await trigger(["location", "dateTime", "avatarUrl"]);
+    if (isStepValid) {
+      nextStep();
+    }
+  };
+
   return (
     <div className="space-y-4">
       <h2 className="text-2xl font-bold">Event Details</h2>
@@ -25,11 +33,11 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
         <input
           id="location"
           {...register("location", { required: "Location is required" })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded outline-[#4b45f096]"
           aria-invalid={errors.location ? "true" : "false"}
         />
         {errors.location && (
-          <p role="alert" className="text-red-500">
+          <p role="alert" className="text-red-500 mt-2">
             {errors.location.message as string}
           </p>
         )}
@@ -42,11 +50,11 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
           id="dateTime"
           type="datetime-local"
           {...register("dateTime", { required: "Date and time is required" })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded outline-[#4b45f096]"
           aria-invalid={errors.dateTime ? "true" : "false"}
         />
         {errors.dateTime && (
-          <p role="alert" className="text-red-500">
+          <p role="alert" className="text-red-500 mt-2">
             {errors.dateTime.message as string}
           </p>
         )}
@@ -63,8 +71,9 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
         </button>
         <button
           type="button"
-          onClick={nextStep}
-          className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
+          onClick={handleNext}
+          disabled={!isValid}
+          className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Next
         </button>
