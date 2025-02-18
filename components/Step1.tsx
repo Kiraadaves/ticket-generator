@@ -19,8 +19,10 @@ const Step1 = ({ nextStep }: Step1Props) => {
   };
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Personal Information</h2>
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-[#4b45f0]">
+        Personal Information
+      </h2>
       <div>
         <label htmlFor="fullName" className="block mb-2">
           Full Name
@@ -38,7 +40,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
               message: "Full name must be at least 6 characters long",
             },
           })}
-          className="w-full p-2 border rounded outline-[#4b45f096] "
+          className="w-full p-3 border rounded outline-[#4b45f096] "
           aria-invalid={errors.fullName ? "true" : "false"}
         />
         {errors.fullName && (
@@ -61,7 +63,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
               message: "Invalid email format",
             },
           })}
-          className="w-full p-2 border rounded outline-[#4b45f096]"
+          className="w-full p-3 border rounded outline-[#4b45f096]"
           aria-invalid={errors.email ? "true" : "false"}
         />
         {errors.email && (
@@ -91,7 +93,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
               message: "Phone number must be exactly 11 characters long",
             },
           })}
-          className="w-full p-2 border rounded outline-[#4b45f096]"
+          className="w-full p-3 border rounded outline-[#4b45f096]"
           aria-invalid={errors.phoneNumber ? "true" : "false"}
         />
         {errors.phoneNumber && (
@@ -104,7 +106,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
         type="button"
         onClick={handleNext}
         disabled={!isValid}
-        className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mr-auto mt-12 bg-[#4b45f0] px-4 py-3 w-36 rounded-lg text-[#ffffff] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
       </button>

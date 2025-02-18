@@ -9,7 +9,7 @@ import Ticket from "./Ticket";
 
 const formsteps = [
   { id: 1, title: "Your info", component: Step1 },
-  { id: 2, title: "Select date and upload photo", component: Step2 },
+  { id: 2, title: "Event Details", component: Step2 },
   { id: 3, title: "Summary", component: Step3 },
 ];
 
@@ -77,8 +77,8 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5FAFF] flex flex-col md:items-center md:justify-center p-0 md:p-4">
-      <div className="relative md:w-[940px] md:h-[600px] md:p-4 md:bg-white md:rounded-2xl md:shadow-lg md:flex">
+    <div className="min-h-screen bg-sky-50 shadow-md rounded-lg flex flex-col md:items-center md:justify-center p-0 md:p-4">
+      <div className="relative md:w-[940px] md:h-[630px] md:p-4 md:bg-white md:rounded-2xl md:shadow-lg md:flex">
         <aside className="md:w-[274px] h-[172px] md:h-full bg-[url('/bg-sidebar-mobile.svg')] md:bg-[url('/bg-sidebar-desktop.svg')] bg-cover bg-center md:rounded-lg">
           <div className="pt-8 px-4 md:pt-10 md:px-8 flex md:flex-col justify-center md:justify-start gap-4 md:gap-8">
             {formsteps.map((steps) => (
@@ -93,7 +93,7 @@ const MultiStepForm = () => {
                   {steps.id}
                 </div>{" "}
                 <div className="hidden md:block">
-                  <p className="text-xs text-pastel-blue">STEP {steps.id}</p>
+                  <p className="text-xs text-[#fbab7c]">STEP {steps.id}</p>
                   <p className="text-sm font-bold text-white">
                     {steps.title.toUpperCase()}
                   </p>

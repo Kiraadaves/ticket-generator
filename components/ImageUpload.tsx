@@ -38,11 +38,11 @@ const ImageUpload = ({ onUpload }: ImageUploadProps) => {
         type="file"
         accept="image/*"
         onChange={handleUpload}
-        className="w-full p-2 border rounded outline-[#4b45f096]"
+        className="w-full p-3 border rounded outline-[#4b45f096]"
       />
       {preview && (
-        <div className="mt-4">
-          <p>Preview:</p>
+        <div className="mt-4 flex justify-between flex-wrap items-center">
+          <p>Image Preview</p>
           <Image
             width={100}
             height={100}

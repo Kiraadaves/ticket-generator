@@ -25,7 +25,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Event Details</h2>
+      <h2 className="text-2xl font-bold text-[#4b45f0]">Event Details</h2>
       <div>
         <label htmlFor="location" className="block mb-2">
           Location
@@ -33,7 +33,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
         <input
           id="location"
           {...register("location", { required: "Location is required" })}
-          className="w-full p-2 border rounded outline-[#4b45f096]"
+          className="w-full p-3 border rounded outline-[#4b45f096]"
           aria-invalid={errors.location ? "true" : "false"}
         />
         {errors.location && (
@@ -50,7 +50,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
           id="dateTime"
           type="datetime-local"
           {...register("dateTime", { required: "Date and time is required" })}
-          className="w-full p-2 border rounded outline-[#4b45f096]"
+          className="w-full p-3 border rounded outline-[#4b45f096]"
           aria-invalid={errors.dateTime ? "true" : "false"}
         />
         {errors.dateTime && (
@@ -60,12 +60,12 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
         )}
       </div>
       <ImageUpload onUpload={(dataUrl) => setValue("avatarUrl", dataUrl)} />
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between mt-8 items-center">
         {" "}
         <button
           type="button"
           onClick={prevStep}
-          className="bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff]"
+          className="bg-[#4b45f0] px-4 py-3 rounded-lg text-[#ffffff] w-36"
         >
           Previous
         </button>
@@ -73,7 +73,7 @@ const Step2 = ({ nextStep, prevStep }: Step2Props) => {
           type="button"
           onClick={handleNext}
           disabled={!isValid}
-          className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="ml-auto bg-[#4b45f0] px-4 py-3 rounded-lg text-[#ffffff] w-36 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Next
         </button>

@@ -11,10 +11,10 @@ const Step3 = ({ prevStep }: Step3Props) => {
 
   return (
     <div className="space-y-4">
-      <h2 className="md:text-2xl font-bold text-center text-[#c375ac] text-xl">
+      <h2 className="md:text-2xl font-bold text-center text-[#4b45f0] text-xl">
         Summary
       </h2>
-      <div>
+      <div className="space-y-4">
         <p>
           <strong>Full Name:</strong> {formData.fullName}
         </p>
@@ -31,9 +31,9 @@ const Step3 = ({ prevStep }: Step3Props) => {
           <strong>Date and Time:</strong> {formData.dateTime}
         </p>
         {formData.avatarUrl && (
-          <div className="mt-4">
+          <div className="mt-4 flex justify-between flex-wrap items-center">
             <p>
-              <strong>Avatar:</strong>
+              <strong>Avatar</strong>
             </p>
             <Image
               width={100}
@@ -45,20 +45,20 @@ const Step3 = ({ prevStep }: Step3Props) => {
           </div>
         )}
       </div>
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between mt-12">
         {" "}
         <button
           type="button"
           onClick={prevStep}
-          className="bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff]"
+          className="bg-[#4b45f0] px-4 py-3 w-36 rounded-lg text-[#ffffff]"
         >
           Previous
         </button>
         <button
           type="submit"
-          className="ml-auto bg-[#4b45f0] px-4 py-2 rounded-lg text-[#ffffff] hover:opacity-90"
+          className="ml-auto bg-[#4b45f0] px-4 py-3 w-36 rounded-lg text-[#ffffff] hover:opacity-90"
         >
-          Generate Ticket
+          Generate
         </button>
       </div>
     </div>
